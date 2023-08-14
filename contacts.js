@@ -68,7 +68,7 @@ const removeContact = async id => {
 
 const addContact = async (name, email, phone) => {
   try {
-    if (!name || !email || isNaN(phone.replaceAll(' ', ''))) {
+    if (!name || !email || !phone) {
       console.log(
         'Please try again with full details: name, email and phone must be given correctly.'
       );
@@ -82,6 +82,7 @@ const addContact = async (name, email, phone) => {
     };
     const contacts = await readContacts();
     contacts.push(newContact);
+    console.log('Contact added successfully.');
     saveContacts(contacts);
   } catch (err) {
     console.log('An error occurred while adding the contact:', err);
